@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<user-definition>
+  <users>
+    <user1>
+	<username>myuser</username>
+	<password>password123</password>
+    </user1>
+    <default>	
+	<username>myuser</username>
+	<password>password123</password>
+    </default>
+  </users>
+</user-definition>
