@@ -1,5 +1,6 @@
 package com.fujitsu.webframework.common.properties;
 
+import lombok.Getter;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 
@@ -13,8 +14,9 @@ public class Credentials {
 
   private static final File defaultConfigFile = new File(Configuration.getCredentialsFilePath());
 
-
+  @Getter
   public final String userName;
+  @Getter
   public final String password;
 
 

@@ -2,6 +2,7 @@ package com.fujitsu.webframework.PageObjects.authentication;
 
 import com.fujitsu.webframework.PageObjects.MainBasePageObject;
 //import com.wikia.webdriver.common.core.helpers.User;
+import com.fujitsu.webframework.common.logging.PageObjectLogging;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -60,10 +61,8 @@ public class LoginPage extends MainBasePageObject {
       wait.forElementVisible(signInAuthModal);
     }
     catch (TimeoutException e) {
-      e.printStackTrace();
-      //TODO!!
-//      PageObjectLogging.logInfo("Sign In Auth Modal is not displayed");
-//      return false;
+      PageObjectLogging.logInfo("Sign In box is not displayed");
+      return false;
     }
     return true;
     }

@@ -5,6 +5,7 @@ import com.fujitsu.webframework.common.configuration.Configuration;
 import com.fujitsu.webframework.common.driverprovider.DriverProvider;
 import com.fujitsu.webframework.common.core.elements.Wait;
 //import com.wikia.webdriver.common.logging.PageObjectLogging;
+import com.fujitsu.webframework.common.logging.PageObjectLogging;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -114,9 +115,7 @@ public class BasePageObject {
     try {
       return element.isDisplayed();
     } catch (NoSuchElementException e) {
-      e.printStackTrace();
-      //TODO!!
-      //PageObjectLogging.logInfo(e.getMessage());
+      PageObjectLogging.logInfo(e.getMessage());
       return false;
     }
   }
@@ -128,10 +127,10 @@ public class BasePageObject {
    *
    * @param element to be clicked on
    */
-  //TODO!!
-//  protected void waitAndClick(WebElement element) {
-//    wait.forElementClickable(element).click();
-//  }
+
+  protected void waitAndClick(WebElement element) {
+    wait.forElementClickable(element).click();
+  }
 
   /**
    * Simple method for getting number of element on page. Changing the implicitWait value allows us

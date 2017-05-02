@@ -9,6 +9,7 @@ import com.fujitsu.webframework.PageObjects.MainBasePageObject;
 //import com.wikia.webdriver.pageobjectsfactory.pageobject.article.ArticlePageObject;
 //import com.wikia.webdriver.pageobjectsfactory.pageobject.search.intrawikisearch.IntraWikiSearchPageObject;
 import com.fujitsu.webframework.PageObjects.authentication.LoginPage;
+import com.fujitsu.webframework.common.logging.PageObjectLogging;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -77,7 +78,7 @@ public class NavigationBar extends MainBasePageObject {
 //  }
 
   public LoginPage clickOnSignIn(){
-    signInLink.click();
+      signInLink.click();
     return new LoginPage();
   }
 }

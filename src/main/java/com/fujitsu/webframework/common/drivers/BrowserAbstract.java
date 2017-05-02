@@ -4,6 +4,7 @@ import com.fujitsu.webframework.common.drivers.MainWebDriver;
 import com.fujitsu.webframework.common.configuration.Configuration;
 //import com.fujitsu.webframework.common.logging.PageObjectLogging;
 //import net.lightbody.bmp.proxy.CaptureType;
+import com.fujitsu.webframework.common.logging.PageObjectLogging;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
@@ -28,7 +29,7 @@ public abstract class BrowserAbstract {
     setBrowserLogging(Level.SEVERE);
     MainWebDriver webdriver = create();
     setTimeputs(webdriver);
-    //setListeners(webdriver);
+    setListeners(webdriver);
 
     return webdriver;
   }
@@ -55,9 +56,9 @@ public abstract class BrowserAbstract {
     webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
   }
 
-//  protected void setListeners(MainWebDriver webDriver) {
-//    webDriver.register(new PageObjectLogging());
-//  }
+  protected void setListeners(MainWebDriver webDriver) {
+    webDriver.register(new PageObjectLogging());
+  }
 
   /**
    * Add browser extensions

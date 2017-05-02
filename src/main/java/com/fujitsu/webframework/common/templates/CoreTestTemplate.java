@@ -1,17 +1,16 @@
 package com.fujitsu.webframework.common.templates;
 
-//import com.wikia.webdriver.common.core.CommonUtils;
-//import com.wikia.webdriver.common.core.TestContext;
+import com.fujitsu.webframework.common.core.CommonUtils;
+import com.fujitsu.webframework.common.core.TestContext;
+import com.fujitsu.webframework.common.core.annotations.DontRun;
+import com.fujitsu.webframework.common.core.annotations.Execute;
+import com.fujitsu.webframework.common.core.annotations.InBrowser;
+import com.fujitsu.webframework.common.core.annotations.NetworkTrafficDump;
 import com.fujitsu.webframework.common.drivers.MainWebDriver;
-//import com.wikia.webdriver.common.core.annotations.DontRun;
-//import com.wikia.webdriver.common.core.annotations.Execute;
-//import com.wikia.webdriver.common.core.annotations.InBrowser;
-//import com.wikia.webdriver.common.core.annotations.NetworkTrafficDump;
 import com.fujitsu.webframework.common.configuration.Configuration;
-//import com.wikia.webdriver.common.core.networktrafficinterceptor.NetworkTrafficInterceptor;
 import com.fujitsu.webframework.common.driverprovider.DriverProvider;
 //import com.wikia.webdriver.common.driverprovider.UseUnstablePageLoadStrategy;
-//import com.wikia.webdriver.common.logging.PageObjectLogging;
+import com.fujitsu.webframework.common.logging.PageObjectLogging;
 import org.openqa.selenium.Dimension;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -22,8 +21,8 @@ import org.testng.annotations.Listeners;
 import java.io.File;
 import java.lang.reflect.Method;
 
-//@Listeners({com.wikia.webdriver.common.logging.PageObjectLogging.class,
-//    com.wikia.webdriver.common.testnglisteners.InvokeMethodAdapter.class})
+@Listeners({com.fujitsu.webframework.common.logging.PageObjectLogging.class,
+    com.fujitsu.webframework.common.testnglisteners.InvokeMethodAdapter.class})
 public abstract class CoreTestTemplate {
 
   protected MainWebDriver driver;
@@ -33,34 +32,34 @@ public abstract class CoreTestTemplate {
     driver = DriverProvider.getActiveDriver();
   }
 
-//  @BeforeSuite(alwaysRun = true)
-//  public void beforeSuite() {
-//    prepareDirectories();
-//  }
+  @BeforeSuite(alwaysRun = true)
+  public void beforeSuite() {
+    prepareDirectories();
+  }
 
   @BeforeMethod(alwaysRun = true)
   public void initTestContext(Method method) {
-    System.out.println("running loadfirstpage");
-    //TestContext.writeMethodName(method);
-    //PageObjectLogging.start(method);
+
+    TestContext.writeMethodName(method);
+    PageObjectLogging.start(method);
 
     Configuration.clearCustomTestProperties();
 
     String browser = Configuration.getBrowser();
-//    setPropertiesFromAnnotationsOnDeclaringClass(method.getDeclaringClass());
-//    setPropertiesFromAnnotationsOnMethod(method);
+    setPropertiesFromAnnotationsOnDeclaringClass(method.getDeclaringClass());
+    setPropertiesFromAnnotationsOnMethod(method);
     String currentBrowser = Configuration.getBrowser();
 
-//    if (!browser.equals(currentBrowser)) {
-//      PageObjectLogging.logWarning("Parameter override", "Browser parameter changed by annotation"
-//          + ", old value: " + browser + ", new value: " + currentBrowser);
-//    }
+    if (!browser.equals(currentBrowser)) {
+      PageObjectLogging.logWarning("Parameter override", "Browser parameter changed by annotation"
+          + ", old value: " + browser + ", new value: " + currentBrowser);
+    }
 
     prepareURLs();
 
-//    if (isTestExcludedFromEnv(method)) {
-//      throw new SkipException("Test can't be run on " + Configuration.getEnv() + " environment");
-//    }
+    if (isTestExcludedFromEnv(method)) {
+      throw new SkipException("Test can't be run on " + Configuration.getEnv() + " environment");
+    }
 
     driver = DriverProvider.getActiveDriver();
 
@@ -75,70 +74,70 @@ public abstract class CoreTestTemplate {
     }
   }
 
-//  private void setPropertiesFromAnnotationsOnDeclaringClass(Class<?> declaringClass) {
-//    if (declaringClass.isAnnotationPresent(Execute.class)) {
-//      setTestProperty("wikiName", declaringClass.getAnnotation(Execute.class).onWikia());
-//      setTestProperty("disableFlash", declaringClass.getAnnotation(Execute.class).disableFlash());
-//      setTestProperty("mockAds", declaringClass.getAnnotation(Execute.class).mockAds());
-//      setTestProperty("disableCommunityPageSalesPitchDialog",
-//          declaringClass.getAnnotation(Execute.class).disableCommunityPageSalesPitchDialog());
-//    }
-//
-//    if (declaringClass.isAnnotationPresent(InBrowser.class)) {
-//      setTestProperty("browser", declaringClass.getAnnotation(InBrowser.class).browser().getName());
-//      setTestProperty("browserSize", declaringClass.getAnnotation(InBrowser.class).browserSize());
-//      setTestProperty("emulator", declaringClass.getAnnotation(InBrowser.class).emulator());
-//    }
-////  }
-//
-//  private void setPropertiesFromAnnotationsOnMethod(Method method) {
-//    if (method.isAnnotationPresent(Execute.class)) {
-//      setTestProperty("wikiName", method.getAnnotation(Execute.class).onWikia());
-//      setTestProperty("disableFlash", method.getAnnotation(Execute.class).disableFlash());
-//      setTestProperty("mockAds", method.getAnnotation(Execute.class).mockAds());
-//      setTestProperty("disableCommunityPageSalesPitchDialog",
-//          method.getAnnotation(Execute.class).disableCommunityPageSalesPitchDialog());
-//    }
-//
-//    if (method.isAnnotationPresent(InBrowser.class)) {
-//      setTestProperty("browser", method.getAnnotation(InBrowser.class).browser().getName());
-//      setTestProperty("browserSize", method.getAnnotation(InBrowser.class).browserSize());
-//      setTestProperty("emulator", method.getAnnotation(InBrowser.class).emulator());
-//    }
-//
+  private void setPropertiesFromAnnotationsOnDeclaringClass(Class<?> declaringClass) {
+    if (declaringClass.isAnnotationPresent(Execute.class)) {
+      setTestProperty("wikiName", declaringClass.getAnnotation(Execute.class).onWikia());
+      setTestProperty("disableFlash", declaringClass.getAnnotation(Execute.class).disableFlash());
+      setTestProperty("mockAds", declaringClass.getAnnotation(Execute.class).mockAds());
+      setTestProperty("disableCommunityPageSalesPitchDialog",
+          declaringClass.getAnnotation(Execute.class).disableCommunityPageSalesPitchDialog());
+    }
+
+    if (declaringClass.isAnnotationPresent(InBrowser.class)) {
+      setTestProperty("browser", declaringClass.getAnnotation(InBrowser.class).browser().getName());
+      setTestProperty("browserSize", declaringClass.getAnnotation(InBrowser.class).browserSize());
+      setTestProperty("emulator", declaringClass.getAnnotation(InBrowser.class).emulator());
+    }
+  }
+
+  private void setPropertiesFromAnnotationsOnMethod(Method method) {
+    if (method.isAnnotationPresent(Execute.class)) {
+      setTestProperty("wikiName", method.getAnnotation(Execute.class).onWikia());
+      setTestProperty("disableFlash", method.getAnnotation(Execute.class).disableFlash());
+      setTestProperty("mockAds", method.getAnnotation(Execute.class).mockAds());
+      setTestProperty("disableCommunityPageSalesPitchDialog",
+          method.getAnnotation(Execute.class).disableCommunityPageSalesPitchDialog());
+    }
+
+    if (method.isAnnotationPresent(InBrowser.class)) {
+      setTestProperty("browser", method.getAnnotation(InBrowser.class).browser().getName());
+      setTestProperty("browserSize", method.getAnnotation(InBrowser.class).browserSize());
+      setTestProperty("emulator", method.getAnnotation(InBrowser.class).emulator());
+    }
+
 //    if (method.isAnnotationPresent(UseUnstablePageLoadStrategy.class)) {
 //      setTestProperty("unstablePageLoadStrategy", "true");
 //    }
-//
-//    if (method.isAnnotationPresent(NetworkTrafficDump.class)) {
-//      setTestProperty("dumpNetworkTraffic",
-//          String.valueOf(method.getAnnotation(NetworkTrafficDump.class).networkTrafficDump()));
-//      setTestProperty("useProxy", "true");
-//      setTestProperty("useMITM",
-//          String.valueOf(method.getAnnotation(NetworkTrafficDump.class).useMITM()));
-//    }
-//  }
-//
-//  /**
-//   * Return false if test is excluded from running on current test environment
-//   */
-//  protected boolean isTestExcludedFromEnv(Method method) {
-//    if (method.isAnnotationPresent(DontRun.class)) {
-//      String[] excludedEnvs = method.getAnnotation(DontRun.class).env();
-//
-//      for (String excludedEnv : excludedEnvs) {
-//        if (Configuration.getEnv().contains(excludedEnv)) {
-//          return true;
-//        }
-//      }
-//    }
-//    return false;
-//  }
-//
-//  protected void prepareDirectories() {
-//    CommonUtils.deleteDirectory("." + File.separator + "logs");
-//    CommonUtils.createDirectory("." + File.separator + "logs");
-//  }
+
+    if (method.isAnnotationPresent(NetworkTrafficDump.class)) {
+      setTestProperty("dumpNetworkTraffic",
+          String.valueOf(method.getAnnotation(NetworkTrafficDump.class).networkTrafficDump()));
+      setTestProperty("useProxy", "true");
+      setTestProperty("useMITM",
+          String.valueOf(method.getAnnotation(NetworkTrafficDump.class).useMITM()));
+    }
+  }
+
+  /**
+   * Return false if test is excluded from running on current test environment
+   */
+  protected boolean isTestExcludedFromEnv(Method method) {
+    if (method.isAnnotationPresent(DontRun.class)) {
+      String[] excludedEnvs = method.getAnnotation(DontRun.class).env();
+
+      for (String excludedEnv : excludedEnvs) {
+        if (Configuration.getEnv().contains(excludedEnv)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  protected void prepareDirectories() {
+    CommonUtils.deleteDirectory("." + File.separator + "logs");
+    CommonUtils.createDirectory("." + File.separator + "logs");
+  }
 
   protected void setWindowSize() {
     Dimension browserSize = Configuration.getBrowserSize();
@@ -157,15 +156,15 @@ public abstract class CoreTestTemplate {
     DriverProvider.close();
   }
 
-//  protected void switchToWindow(int index) {
-//    DriverProvider.switchActiveWindow(index);
-//    refreshDriver();
-//
-//    String driverName =
-//        DriverProvider.getActiveDriver().equals(driver) ? "primary window" : "secondary window";
-//    PageObjectLogging.log("switchToWindow", "================ " + driverName + " ================",
-//        true);
-//  }
+  protected void switchToWindow(int index) {
+    DriverProvider.switchActiveWindow(index);
+    refreshDriver();
+
+    String driverName =
+        DriverProvider.getActiveDriver().equals(driver) ? "primary window" : "secondary window";
+    PageObjectLogging.log("switchToWindow", "================ " + driverName + " ================",
+        true);
+  }
 
   protected abstract void prepareURLs();
 

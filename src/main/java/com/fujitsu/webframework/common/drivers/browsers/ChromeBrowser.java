@@ -38,8 +38,6 @@ public class ChromeBrowser extends BrowserAbstract {
       chromeBinaryPath = CHROMEDRIVER_PATH_LINUX;
     }
 
-    System.out.println("PATH " +chromeBinaryPath);
-    //System.out.println(ClassLoader.getSystemResource(chromeBinaryPath).getPath());
 
     //File chromedriver = new File(ClassLoader.getSystemResource(chromeBinaryPath).getPath());
     File chromedriver = new File("/Users/xtcmac1/IdeaProjects/wikia/selenium-tests/build/resources/test/ChromeDriver/chromedriver_mac64/chromedriver");
