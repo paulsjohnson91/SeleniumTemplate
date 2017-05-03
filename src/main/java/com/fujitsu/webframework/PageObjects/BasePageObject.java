@@ -4,7 +4,6 @@ import com.fujitsu.webframework.common.drivers.MainWebDriver;
 import com.fujitsu.webframework.common.configuration.Configuration;
 import com.fujitsu.webframework.common.driverprovider.DriverProvider;
 import com.fujitsu.webframework.common.core.elements.Wait;
-//import com.wikia.webdriver.common.logging.PageObjectLogging;
 import com.fujitsu.webframework.common.logging.PageObjectLogging;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -57,6 +56,10 @@ public class BasePageObject {
 //  public void waitForPageLoad() {
 //    wait.forElementPresent(By.cssSelector("script[src='http://b.scorecardresearch.com/beacon.js']"));
 //  }
+
+  protected int getLocalCode(String value, boolean isValidated){
+    return 1;
+  }
 
   public static String getTimeStamp() {
     Date time = new Date();

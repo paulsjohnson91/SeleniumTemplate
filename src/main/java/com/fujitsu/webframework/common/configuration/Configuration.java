@@ -179,9 +179,6 @@ public class Configuration {
         return getProp("countryCode");
     }
 
-    public static boolean useProxy() {
-        return Boolean.valueOf(getProp("useProxy")) || StringUtils.isNotBlank(getCountryCode());
-    }
 
     /**
      * @return null if window is supposed to be maximised, Dimension if any other size is demanded
@@ -216,7 +213,4 @@ public class Configuration {
         return res.toArray(new String[res.size()]);
     }
 
-    public static String getDisableCommunityPageSalesPitchDialog() {
-        return getProp("disableCommunityPageSalesPitchDialog");
-    }
 }

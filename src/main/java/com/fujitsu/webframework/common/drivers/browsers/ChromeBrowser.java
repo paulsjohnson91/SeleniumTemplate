@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class ChromeBrowser extends BrowserAbstract {
 
-  private static final String CHROMEDRIVER_PATH_FORMAT = "ChromeDriver/chromedriver_%s";
+  private static final String CHROMEDRIVER_PATH_FORMAT = "build/resources/test/ChromeDriver/chromedriver_%s";
   private static final String CHROMEDRIVER_PATH_MAC =
       String.format(CHROMEDRIVER_PATH_FORMAT, "mac64/chromedriver");
   private static final String CHROMEDRIVER_PATH_LINUX =
@@ -38,9 +38,9 @@ public class ChromeBrowser extends BrowserAbstract {
       chromeBinaryPath = CHROMEDRIVER_PATH_LINUX;
     }
 
-
+    System.out.println(chromeBinaryPath);
     //File chromedriver = new File(ClassLoader.getSystemResource(chromeBinaryPath).getPath());
-    File chromedriver = new File("/Users/xtcmac1/IdeaProjects/wikia/selenium-tests/build/resources/test/ChromeDriver/chromedriver_mac64/chromedriver");
+    File chromedriver = new File(chromeBinaryPath);
 
     // set application user permissions to 455
     chromedriver.setExecutable(true);

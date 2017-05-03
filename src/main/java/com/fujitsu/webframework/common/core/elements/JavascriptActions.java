@@ -1,6 +1,6 @@
 package com.fujitsu.webframework.common.core.elements;
 
-import com.fujitsu.webframework.common.core.imageUtilities.XSSContent;
+import com.fujitsu.webframework.common.core.XSSContent;
 import com.fujitsu.webframework.common.logging.PageObjectLogging;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;

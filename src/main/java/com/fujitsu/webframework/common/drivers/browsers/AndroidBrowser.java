@@ -3,7 +3,7 @@ package com.fujitsu.webframework.common.drivers.browsers;
 import com.fujitsu.webframework.common.drivers.MainWebDriver;
 import com.fujitsu.webframework.common.configuration.Configuration;
 import com.fujitsu.webframework.common.drivers.BrowserAbstract;
-//import com.fujitsu.webframework.common.logging.PageObjectLogging;
+import com.fujitsu.webframework.common.logging.PageObjectLogging;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -26,9 +26,7 @@ public class AndroidBrowser extends BrowserAbstract {
     try {
       url = new URL("http://" + Configuration.getAppiumIp() + "/wd/hub");
     } catch (MalformedURLException e) {
-      e.printStackTrace();
-      //TODO!!
-      //PageObjectLogging.log("getAndroindInstance", e, false);
+      PageObjectLogging.log("getAndroidInstance", e, false);
     }
     mobileDriver = new AndroidDriver(url, destCaps);
 

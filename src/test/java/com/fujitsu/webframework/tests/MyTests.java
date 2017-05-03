@@ -4,8 +4,10 @@ import com.fujitsu.webframework.PageObjects.MainBasePageObject;
 import com.fujitsu.webframework.PageObjects.authentication.LoginPage;
 import com.fujitsu.webframework.PageObjects.commonComponents.NavigationBar;
 import com.fujitsu.webframework.common.templates.NewTestTemplate;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.*;
+
 
 /**
  * Created by ONUR BASKIRT on 26.08.2015.
@@ -39,6 +41,7 @@ public class MyTests extends NewTestTemplate{
         NavigationBar SignIn = new NavigationBar(driver);
         LoginPage login = SignIn.clickOnSignIn();
         Assert.assertTrue(login.isSignOnPageOpen());
+
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
@@ -47,4 +50,6 @@ public class MyTests extends NewTestTemplate{
 
 
     }
+
 }
+

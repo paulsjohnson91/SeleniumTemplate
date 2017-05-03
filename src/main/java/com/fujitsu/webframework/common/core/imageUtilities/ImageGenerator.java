@@ -1,6 +1,7 @@
 package com.fujitsu.webframework.common.core.imageUtilities;
 
 import com.fujitsu.webframework.common.core.CommonUtils;
+import com.fujitsu.webframework.common.core.PageContent;
 import com.fujitsu.webframework.common.logging.PageObjectLogging;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.openqa.selenium.WebDriverException;

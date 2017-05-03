@@ -4,7 +4,6 @@ import com.fujitsu.webframework.common.core.CommonExpectedConditions;
 import com.fujitsu.webframework.common.core.SelectorStack;
 import com.fujitsu.webframework.common.logging.PageObjectLogging;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -452,7 +451,7 @@ public class Wait {
    * @param time - in milliseconds
    */
   public void forXMilliseconds(int time) {
-    //PageObjectLogging.logInfo("Wait for " + time + " ms");
+    PageObjectLogging.logInfo("Wait for " + time + " ms");
     try {
       Thread.sleep(time);
     } catch (InterruptedException e) {

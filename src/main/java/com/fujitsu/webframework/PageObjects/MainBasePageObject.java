@@ -42,7 +42,9 @@ package com.fujitsu.webframework.PageObjects;
 //import com.wikia.webdriver.pageobjectsfactory.pageobject.wikipage.WikiHistoryPageObject;
 //import com.wikia.webdriver.pageobjectsfactory.pageobject.wikipage.blog.BlogPageObject;
 //import org.joda.time.DateTime;
+import com.fujitsu.webframework.common.core.elements.Wait;
 import org.openqa.selenium.*;
+import sun.applet.Main;
 
 
 public class MainBasePageObject extends BasePageObject {
@@ -55,77 +57,15 @@ public class MainBasePageObject extends BasePageObject {
       ".wikia-nav__avatar img[alt*=%userName%]";
 //  @Getter(lazy = true)
 //  private final GlobalNavigation globalNavigation = new GlobalNavigation();
-//  @Getter(lazy = true)
-//  private final WikiaBar wikiaBar = new WikiaBar();
-//  @Getter(lazy = true)
-//  private final KeyboardShortcutsModal keyboardShortcuts = new KeyboardShortcutsModal();
-//  @Getter(lazy = true)
-//  private final ActionExplorerModal actionExplorer = new ActionExplorerModal();
-//  @Getter(lazy = true)
-//  private final TopBar topBar = new TopBar(driver);
-//  @Getter(lazy = true)
-//  private final AuthModal authModal = new AuthModal();
-//  @Getter(lazy = true)
-//  private final RegisterArea registerArea = new RegisterArea(true);
-//  @Getter(lazy = true)
-//  private final BannerNotifications bannerNotifications = new BannerNotifications();
-//  @FindBy(css = "body")
-//  protected WebElement body;
-//  @FindBy(css = "#WikiaPageHeader h1")
-//  protected WebElement wikiFirstHeader;
-//  @FindBy(css = "#global-navigation-user-sign-out")
-//  protected WebElement navigationLogoutLink;
-//  @FindBy(css = "#WikiaMainContent a[data-id='edit']")
-//  protected WebElement editButton;
-//  @FindBy(css = "ul#pagehistory > li:first-child .comment")
-//  protected WebElement cssEditSummary;
-//  @FindBy(css = "ul#pagehistory > li:first-child .minoredit")
-//  protected WebElement cssMinorEdit;
-//  @FindBy(css = "#ca-watch")
-//  protected WebElement followButton;
-//  @FindBy(css = "#WikiaMainContent .drop img")
-//  protected WebElement articleEditDropdown;
-//  @FindBy(css = "#ca-delete")
-//  protected WebElement deleteDropdown;
-//  @FindBy(css = "#ca-protect")
-//  protected WebElement protectDropdown;
-//  @FindBy(css = "#ca-move")
-//  protected WebElement renameDropdown;
-//  @FindBy(css = "#ca-ve-edit")
-//  protected WebElement veEditButton;
-//  @FindBy(css = "body.ve")
-//  protected WebElement veMode;
-//  @FindBy(css = ".editsection a")
-//  protected List<WebElement> sectionEditButtons;
-//  @FindBy(css = "a.new[href$='redlink=1']")
-//  protected List<WebElement> redLinks;
-//  @FindBy(css = "body:not(.rte_source):not(.ve):not(.rte_wysiwyg)")
-//  protected WebElement srcOnlyMode;
-//  @FindBy(css = ".oo-ui-widget-enabled.ve-ui-wikiaFocusWidget")
-//  protected WebElement focusMode;
-//  @FindBy(css = ".ve-init-mw-viewPageTarget-toolbar")
-//  protected WebElement veToolMenu;
-//  @FindBy(css = "h3[id='headerWikis']")
-//  protected WebElement headerWhereIsMyExtensionPage;
-//  @FindBy(css = "#globalNavigation")
-//  protected WebElement newGlobalNavigation;
-//  @FindBy(css = "#mw-content-text .wikia-button-facebook")
-//  protected WebElement formConnectWithFbButtonBasic;
-//  protected By editButtonBy = By.cssSelector("#WikiaMainContent a[data-id='edit']");
-//  protected By parentBy = By.xpath("./..");
-//  protected String modalWrapper = "#WikiaConfirm";
-//  @FindBy(css = ".banner-notification")
-//  private WebElement bannerNotification;
-//  @FindBy(css = "#WikiaArticle a[href*='Special:UserLogin']")
-//  private WebElement specialUserLoginLink;
-//  @FindBy(css = ".wds-global-navigation__user-menu")
-//  private WebElement globalNavigationAvatar;
-//  @FindBy(css = "#WikiaFooter")
-//  private WebElement footer;
-//  @FindBy(css = ".wds-global-footer__header")
-//  private WebElement mobileFooter;
-//  @FindBy(css = "#globalNavigation")
-//  private WebElement globalNavigationBar;
+
+  public MainBasePageObject(){
+
+  }
+
+  public MainBasePageObject(By pageIdentifier){
+      wait.forElementPresent(pageIdentifier,15);
+  }
+
 
   public String getWikiUrl() {
     String currentURL = driver.getCurrentUrl();

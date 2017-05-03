@@ -3,7 +3,7 @@ package com.fujitsu.webframework.common.driverprovider;
 import com.fujitsu.webframework.common.drivers.MainWebDriver;
 import com.fujitsu.webframework.common.configuration.Configuration;
 import com.fujitsu.webframework.common.drivers.Browser;
-//import com.wikia.webdriver.common.logging.PageObjectLogging;
+import com.fujitsu.webframework.common.logging.PageObjectLogging;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,9 +42,7 @@ public class DriverProvider {
         try {
           webDriver.quit();
         }catch (UnsatisfiedLinkError | NoClassDefFoundError e){
-          e.printStackTrace();
-          //TODO!!
-          //PageObjectLogging.log("Closing Browser", e, true);
+          PageObjectLogging.log("Closing Browser", e, true);
         }
       }
     }

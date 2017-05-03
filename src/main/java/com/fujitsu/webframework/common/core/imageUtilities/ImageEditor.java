@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,8 +33,15 @@ public class ImageEditor {
     int width = size.width;
     int height = size.height;
     File subImg;
+//    File outputfile = new File("image.png");
+//    try {
+//      ImageIO.write(image, "png", outputfile);
+//    } catch (IOException e) {
+//      e.printStackTrace();
+//    }
     try {
       subImg = File.createTempFile("screenshot", ".png");
+
     } catch (IOException e) {
       throw new WebDriverException(e);
     }
@@ -56,9 +64,11 @@ public class ImageEditor {
     );
     try {
       ImageIO.write(dest, "png", subImg);
+
     } catch (IOException e) {
       throw new WebDriverException(e);
     }
+
     return subImg;
   }
 
