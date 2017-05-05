@@ -2,7 +2,7 @@
 # To localy override values, create config.yml file next to this one.
 # You can also override these values by specyfing a system property
 
-browser: CHROME # acceptable values: FF, CHROME, GHOST, ANDROID, CHROMEMOBILEMERCURY, HTMLUNIT
+browser: ANDROID # acceptable values: FF, CHROME, GHOST, ANDROID, CHROMEMOBILEMERCURY, HTMLUNIT
 websiteName: mediawiki119 # default testing wiki
 env: prod # acceptable values: prod, preview, sandbox-number dev-name
 credentialsPath: selenium-config/config.xml # Path to your config.xml file
@@ -32,5 +32,5 @@ emulator: null
 
 # Config related with mobile devices
 platform: ANDROID # acceptable values: IOS and ANDROID
-appiumIp: 127.0.0.1:4723 # Appium IP address with port ex. 127.0.0.1:4723 Windows 0.0.0.0:4723 Unix
+appiumIp: 0.0.0.0:4723 # Appium IP address with port ex. 127.0.0.1:4723 Windows 0.0.0.0:4723 Unix
 deviceName: ANDROID # capability for Appium server. For Android it can be any value.
